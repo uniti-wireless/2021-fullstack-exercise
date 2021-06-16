@@ -8,8 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 
 let port = 8080;
 
-app.get('/hello', (req, res) => {
-    res.send('hello world: nodemon restart working')
+app.get('/api', (req, res) => {
+    res.send('Welcome. api is functioning correctly')
 })
 
 app.get('/test', (req, res) => {
@@ -30,9 +30,12 @@ app.post('/api/data', authToken, (req, res) => {
         if(err) {
             res.sendStatus(403)
         } else {
+            let fileContents = fs.readFileSync('./exercise.yaml', 'utf8');
+            let data = yaml.load(fileContents);
+            let customersData = data.customers
+
             res.json({
-                message: 'api data route',
-                authData
+                customersData
             })
         }
     })
