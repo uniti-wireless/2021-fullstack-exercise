@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require('dotenv').config();
 const yaml = require('js-yaml');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
@@ -12,21 +13,8 @@ app.get('/api', (req, res) => {
     res.send('Welcome. api is functioning correctly')
 })
 
-app.get('/test', (req, res) => {
-    try {
-        let fileContents = fs.readFileSync('./exercise.yaml', 'utf8');
-        let data = yaml.load(fileContents);
-
-        console.log(data);
-    } catch (e) {
-        console.log(e);
-    }
-
-    res.send('test route for reading .yaml file. data console logged to server')
-})
-
 app.post('/api/data', authToken, (req, res) => {
-    jwt.verify(req.token, 'secretkey', (err, authData) => {
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, authData) => {
         if(err) {
             res.sendStatus(403)
         } else {
@@ -44,7 +32,7 @@ app.post('/api/data', authToken, (req, res) => {
 app.post('/api/login', authUser, (req, res) => {
     let user = req.body
 
-    jwt.sign({ user }, 'secretkey', (err, token) => {
+    jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
         res.json({ token })
     })
 })
@@ -57,8 +45,8 @@ function authToken(req, res, next) {
         next()
     } else {
         res.sendStatus(403)
-    } 
-}  
+    }
+}
 
 function authUser(req, res, next) {
     let fileContents = fs.readFileSync('./exercise.yaml', 'utf8');
@@ -74,7 +62,7 @@ function authUser(req, res, next) {
     } else {
         res.sendStatus(403)
     }
-}  
+}
 
 app.listen(port, () => {
     console.log(`Now listening on port: ${port}`)
