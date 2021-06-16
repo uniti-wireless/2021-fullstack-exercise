@@ -13,7 +13,7 @@ app.get("/api", (req, res) => {
   res.send("Welcome. api is functioning correctly");
 });
 
-app.post("/api/data", authToken, (req, res) => {
+app.post("/api/customers", authToken, (req, res) => {
   jwt.verify(req.token, process.env.JWT_SECRET, (err, authData) => {
     if (err) {
       res.sendStatus(403);
