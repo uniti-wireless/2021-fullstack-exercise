@@ -24,6 +24,30 @@ app.get('/test', (req, res) => {
     res.send('test route for reading .yaml file. data console logged to server')
 })
 
+app.post('/api/data', authToken, (req, res) => {
+    jwt.verify(req.token, 'secretkey', (err, authData) => {
+        if(err) {
+            res.sendStatus(403)
+        } else {
+            res.json({
+                message: 'api data route',
+                authData
+            })
+        }
+    })
+})
+
+function authToken(req, res, next) {
+    const bearerHeader = req.headers['authorization']
+    if (typeof bearerHeader !== 'undefined') {
+        const bearerToken = bearerHeader.split(' ')[1]
+        req.token = bearerToken
+        next()
+    } else {
+        res.sendStatus(403)
+    } 
+}  
+
 app.post('/api/login', (req, res) => {
     const auth = {
         username: 'john',
@@ -31,9 +55,7 @@ app.post('/api/login', (req, res) => {
     }
 
     jwt.sign({ auth: auth }, 'secretkey', (err, token) => {
-        res.json({
-            token,
-        })
+        res.json({ token })
     })
 })
 
