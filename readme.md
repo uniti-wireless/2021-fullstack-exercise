@@ -28,6 +28,11 @@ All data is to be sourced from `exercise.yaml` - no need to set up a real databa
 Develop an API in C# .Net Core with 2 endpoints:
 1. Authorizes usernames and passwords - `auth` key in `exercise.yaml`, and returns a JWT to authenticate against the customer endpoint
 2. Shows customer data - `customers` key in `exercise.yaml`
+  a. It must provide filters on the following:
+      tags
+      number of employees - 1-10 employees, 11-50 employees, 50+ employees
+  b. it must implement paging
+
 
 #### Frontend
 
