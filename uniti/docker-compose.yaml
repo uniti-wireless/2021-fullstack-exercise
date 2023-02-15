@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  api:
+    image: uniti_test:latest
+    build: .
+    command: "uvicorn main:app --reload --port 5000"
+    ports:
+      - "2000:5000"
+    restart: on-failure
+    environment:
+      - JWT_SECRET=03ad85ed89b67a030a6529ae14bf5744b3905da9
+      - JWT_ALGORITHM=HS256
+      - TOKEN_EXPIRY=300
+    volumes:
+      # reloading when file changed
+      - ./src:/app/src
+    networks:
+      uniti:
+        aliases:
+          - uniti-test.localhost
+  tests:
+    image: uniti_test:latest
+    command: "pytest"
+    depends_on:
+      - api
+    networks:
+      - uniti
+
+networks:
+  uniti:
+    driver: bridge
