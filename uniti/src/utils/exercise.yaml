@@ -1,0 +1,92 @@
+---
+auth:
+  - password: password123
+    username: john
+  - password: 149037y5
+    username: jane
+  - password: idfs9302ks2012
+    username: nick
+  - password: kd93jkd832jd
+    username: james
+customers:
+  - id: f312b57e-a655-4a35-b27f-416c464c3730
+    num_employees: 4
+    name: Fancy Pants
+    tags:
+      - commercial
+      - clothing
+      - pants
+  - id: 999d1860-d809-4296-a206-bb8ee114e3c5
+    name: Jimmys Bar
+    num_employees: 3
+    tags:
+      - commercial
+      - bar
+      - alcohol
+  - id: 41fe1ef3-717f-4f2d-9f77-11eb6b9a0e40
+    name: Tabletop Adventures
+    num_employees: 43
+    tags:
+      - commercial
+      - clothing
+  - id: 333314c1-cfa1-4caa-942c-41cc9e54902c
+    name: Sports Store
+    num_employees: 34
+    tags:
+      - commercial
+      - sports
+      - clothing
+  - id: dab6f5d2-6067-49ab-b82a-53b48a319a15
+    name: Peters Plants
+    num_employees: 32
+    tags:
+      - commercial
+      - gardening
+  - id: 682269e6-a8c9-4406-a1b6-656d163ab248
+    name: Potsys Pots
+    num_employees: 29
+    tags:
+      - industrial
+      - gardening
+      - pottery
+  - id: f5da32de-cb97-4a35-961d-230e4e20b6bf
+    name: Shirts n More
+    num_employees: 3834
+    tags:
+      - commercial
+      - clothing
+      - shirts
+  - id: 397feee7-fc37-4e88-87e1-0378019dfc70
+    name: Bernies Furniture
+    num_employees: 3
+    tags:
+      - commercial
+      - furniture
+      - hardware
+  - id: b13bc3f3-95e8-4c79-81fc-8d32c5bea9e9
+    name: Hardware R Us
+    num_employees: 10
+    tags:
+      - commercial
+      - hardware
+      - tools
+  - id: 97ab21b3-9192-4bd5-af3e-f03ed6a329d9
+    name: Mixy's Power Tools
+    num_employees: 4
+    tags:
+      - commercial
+      - hardware
+      - tools
+  - id: 4e9f7c0f-3473-4307-b27d-08f3af08d15d
+    name: Fred's Clothing
+    num_employees: 1
+    tags:
+      - commercial
+      - clothing
+      - shirts
+  - id: 95684d39-37c2-41ef-ba00-dc974d9f49a0
+    name: Jims Gyms
+    num_employees: 7
+    tags:
+      - commercial
+      - sports
